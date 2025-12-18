@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class StudentServiceImple implements StudentService{
-    // private final StudentRepository studentRepository;
-    // public StudentServiceImple(StudentRepository studentRepository){
-    //     this.studentRepository=studentRepository;
-    // }
 
     @Autowired
     StudentRepository studentRepository;
