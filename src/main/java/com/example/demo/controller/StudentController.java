@@ -1,19 +1,22 @@
-package com.example.demo.controller;
+package com.example.demo.serviceimpl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.entity.Stuentity;
 import com.example.demo.service.StudentService;
-@RestController
-public class StudentController{
-    @Autowired
-    StudentService studentService;
+import com.example.demo.entity.Stuentity;
+import com.example.demo.repository.StudentRepository;
+import org.springframework.stereotype.Service;
 
-    @PostMapping("/postdata")
-    public Student postdata(@RequestBody Stuentity student){
-        return studentService.saveStudent(student);
+@Service
+public class StudentServiceImple implements StudentService {
+
+    private final StudentRepository studentRepository;
+
+    // Constructor Injection
+    public StudentServiceImple(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    @Override
+    public Stuentity saveStudent(Stuentity student) {
+        return studentRepository.save(student);
     }
 }
